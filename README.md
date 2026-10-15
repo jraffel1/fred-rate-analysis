@@ -1,4 +1,4 @@
-Examination of the Impact of Changes in the Fed Funds Rate on Savings
+##Examination of the Impact of Changes in the Fed Funds Rate on Savings
 
 This project examines whether changes in the Fed Funds Rate impact household savings behavior (personal savings rate), the savings rate offered by banks (average national savings deposit rate), or the broader money supply (M2). The data was pulled from the FRED (Federal Reserve Economic Data) api. This project asks three questions using economic data:
 
@@ -6,7 +6,7 @@ This project examines whether changes in the Fed Funds Rate impact household sav
 2. Does it move with the M2 money supply?  
 3. Does it move with the rates banks actually pay savers, and if so, how quickly?
 
-Data
+##Data
 
 Pulled via the fredapi Python package from FRED:
 
@@ -19,14 +19,14 @@ Pulled via the fredapi Python package from FRED:
 
 Two dataframes were built: one including all four series, restricted to 2021–present (the window where SNDR data is available), and one excluding SNDR to preserve the full historical range of the other three series.
 
-Methods
+##Methods
 
 * Cleaned and merged time series with pandas, dropping missing values  
 * Computed level correlations (raw series vs. raw series) and month-over-month change correlations (first differences), since two series can trend together without their changes being related  
 * Tested lagged correlations (0, 1, 3, 6, 12 months) to check whether the Fed Funds Rate leads other series rather than moving with them simultaneously  
 * Visualized each relationship with matplotlib, including a dual-axis plot (Fed Funds Rate vs. Personal Savings Rate) and a shared-axis plot (Fed Funds Rate vs. Deposit Rate)
 
-Key Findings
+##Key Findings
 
 1\. Personal savings rate: essentially unrelated to the Fed Funds Rate
 
@@ -60,17 +60,17 @@ Correlation of month-over-month changes, by lag:
 
 Takeaway: banks pass Fed rate changes through to savers, but with a roughly one-month lag, and the relationship fades out by a year. This lag means banks reprice deposit products shortly after a Fed move rather than instantly or gradually over the long run.
 
-Conclusion
+##Conclusion
 
 The Fed Funds Rate has a clear, measurable, lagged effect on what banks pay savers. However, they have little detectable effect on how much people choose to save or on broad money supply growth. This suggests the rate's influence travels more directly through the banking system's pricing decisions than through household saving psychology, at least over the sample period studied.
 
-Limitations & Next Steps
+##Limitations & Next Steps
 
 * Deposit rate data only covers 2021–present, a period dominated by one rate-hiking cycle so results may not generalize to other rate environments  
 * Correlation ≠ causation; a regression model with controls (inflation, unemployment) would strengthen the story  
 * Could extend to regional or credit union deposit rates, or compare against CD/money market rates for a fuller picture of pass-through
 
-How to Run
+##How to Run
 
 pip install fredapi pandas matplotlib
 
